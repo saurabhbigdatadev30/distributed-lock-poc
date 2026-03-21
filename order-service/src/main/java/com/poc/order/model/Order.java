@@ -1,8 +1,6 @@
 package com.poc.order.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,8 +21,12 @@ public class Order {
     private int quantity;
     private double amount;
 
+
     public static final String STATUS_PENDING = "PENDING";
     public static final String STATUS_CONFIRMED = "CONFIRMED";
+
+    @Enumerated(EnumType.STRING)   // stored as "PENDING" / "CONFIRMED" in the DB column
+    private OrderStatus orderStatus;
 
     /** PENDING | CONFIRMED */
     private String status;
